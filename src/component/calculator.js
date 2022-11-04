@@ -2,19 +2,20 @@ import { evaluate } from "mathjs";
 import React, { useState } from "react";
 import "../component/calculator.css";
 function Calculator() {
-  const [expression, setExpression] = useState("");
+  const [Expression, setExpression] = useState("");
 
   const input = (value) => {
-    let newExpression = expression + value;
+    let newExpression = Expression + value;
     setExpression(newExpression);
   };
   const blank = () => {
     setExpression("");
   };
   const calculate = () => {
-    let result = evaluate(expression); //Math.js lib use
-    let newExpression = expression + "\n" + result;
-    setExpression(newExpression);
+    let result = evaluate(Expression) || 0; //Math.js lib use
+    let newExpression = Expression + "\n" + result;    
+    setExpression(newExpression);   
+
   };
   return (
     <>
@@ -24,7 +25,7 @@ function Calculator() {
             <textarea
               name=""
               id="inputArea"
-              value={expression}
+              value={Expression}
               cols="30"
               rows="10"
             ></textarea>
@@ -69,7 +70,7 @@ function Calculator() {
             <div className="col" onClick={() => input("9")}>
               9
             </div>
-            <div className="col" onClick={calculate}>
+            <div className="col" onClick={calculate} disabled={this}>
               =
             </div>
           </div>
