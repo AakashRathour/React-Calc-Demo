@@ -70,7 +70,7 @@ function Calculator() {
             <div className="col" onClick={() => input("9")}>
               9
             </div>
-            <div className="col" onClick={calculate} disabled={this}>
+            <div className="col" onClick={calculate}>
               =
             </div>
           </div>
